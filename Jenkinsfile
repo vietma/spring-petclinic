@@ -25,18 +25,10 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				// Execute shell script if OS flavor is Linux
-				if (isUnix()) {
-					sh "'${mavenHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
-					// Publish JUnit Report
-					junit '**/target/surefire-reports/TEST-*.xml'
-				} 
-				else {
-				// Execute Batch script if OS flavor is Windows		
-					bat(/"${mavenHome}\bin\mvn" clean package/)
-					// Publish JUnit Report
-					junit '**/target/surefire-reports/TEST-*.xml'
-				}			
+                                // Execute Batch script if OS flavor is Windows		
+                                bat(/"${mavenHome}\bin\mvn" clean package/)
+                                // Publish JUnit Report
+                                junit '**/target/surefire-reports/TEST-*.xml'			
 			}		
 		}
 	}
