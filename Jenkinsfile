@@ -21,7 +21,7 @@ pipeline {
 		stage('Build') {
 			steps {
                                 // Execute Batch script if OS flavor is Windows		
-                                bat(/"${mavenHome}\bin\mvn" clean package/)
+                                bat 'mvn clean package'
                                 // Publish JUnit Report
                                 junit '**/target/surefire-reports/TEST-*.xml'			
 			}		
